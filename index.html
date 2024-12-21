@@ -151,6 +151,32 @@
     // تحديث العد التنازلي كل ثانية
     setInterval(updateCountdown, 1000);
 </script>
+<section style="font-family: 'Arial', sans-serif; margin-bottom: 30px; text-align: center;">
+    <h2 style="color: #0056b3;">عدد الزوار</h2>
+    <div style="background: #e8f5ff; border-left: 5px solid #0056b3; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+        <p id="visitor-count" style="font-size: 1.2em; color: #333; margin: 0; line-height: 1.8;">
+            جاري تحميل عدد الزوار...
+        </p>
+    </div>
+</section>
+
+<script>
+    // الحصول على عداد الزوار من Local Storage
+    let visitorCount = localStorage.getItem('visitorCount');
+
+    // إذا لم يكن موجودًا، قم بتعيينه إلى 1
+    if (!visitorCount) {
+        visitorCount = 1;
+    } else {
+        visitorCount = parseInt(visitorCount) + 1; // زيادة العداد
+    }
+
+    // تحديث العداد في Local Storage
+    localStorage.setItem('visitorCount', visitorCount);
+
+    // عرض العداد على الصفحة
+    document.getElementById('visitor-count').textContent = `أنت الزائر رقم ${visitorCount}`;
+</script>
 
     <section style="font-family: Arial, sans-serif; line-height: 1.8; padding: 20px; background-color: #f9f9f9; margin-bottom: 30px;">
     <h2 style="color: #0056b3; text-align: center; margin-bottom: 20px;">المقدمة:</h2>
