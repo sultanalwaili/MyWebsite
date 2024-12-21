@@ -77,6 +77,43 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
+        section {
+            margin: 20px auto;
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: #e8f5ff;
+            border-left: 5px solid #0056b3;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
         @media (max-width: 600px) {
             #countdown {
                 flex-direction: column;
@@ -112,11 +149,28 @@
             <h2>العد التنازلي لتدشين المشروع:</h2>
             <p>يتبقى على موعد التدشين:</p>
             <div id="countdown">
-                <span id="days">14</span> يوم،
-                <span id="hours">23</span> ساعة،
-                <span id="minutes">59</span> دقيقة،
-                <span id="seconds">19</span> ثانية
+                <span id="days">0</span> يوم،
+                <span id="hours">0</span> ساعة،
+                <span id="minutes">0</span> دقيقة،
+                <span id="seconds">0</span> ثانية
             </div>
+        </section>
+
+        <!-- عدد الزوار -->
+        <section>
+            <h2>عدد الزوار</h2>
+            <div class="highlight">
+                <p id="visitor-count" style="font-size: 1.2em;">جاري تحميل عدد الزوار...</p>
+                <p id="motivational-message" style="font-size: 1em; color: #007BFF; margin-top: 10px;">
+                    شكراً لزيارتك! أنت جزء من رحلتنا نحو التميز التعليمي.
+                </p>
+            </div>
+        </section>
+
+        <!-- مشاركة المشروع -->
+        <section>
+            <h2>مشاركة المشروع</h2>
+            <button onclick="shareProject()">شارك المشروع</button>
         </section>
     </main>
 
@@ -125,58 +179,69 @@
     </footer>
 
     <script>
-    // ضبط موعد التدشين بتاريخ ثابت
-    const launchDate = new Date("2025-01-02T00:00:00"); // تاريخ التدشين: 2 يناير 2025
+        // العد التنازلي
+        const launchDate = new Date("2025-02-02T00:00:00");
 
-    function updateCountdown() {
-        const now = new Date(); // الوقت الحالي
-        const diff = launchDate - now; // الفرق بين الموعد والوقت الحالي
+        function updateCountdown() {
+            const now = new Date();
+            const diff = launchDate - now;
 
-        if (diff <= 0) { // إذا انتهى الوقت
-            document.getElementById("countdown").innerHTML = "🎉 تم تدشين المشروع!";
-            return;
+            if (diff <= 0) {
+                document.getElementById("countdown").innerHTML = "🎉 تم تدشين المشروع!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
         }
 
-        // حساب الأيام والساعات والدقائق والثواني
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        setInterval(updateCountdown, 1000);
 
-        // تحديث العد التنازلي
-        document.getElementById("countdown").innerHTML = 
-            `${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
-    }
+        // عداد الزوار
+        let visitorCount = localStorage.getItem('visitorCount');
+        visitorCount = visitorCount ? parseInt(visitorCount) + 1 : 1;
+        localStorage.setItem('visitorCount', visitorCount);
+        document.getElementById('visitor-count').textContent = `أنت الزائر رقم ${visitorCount}`;
 
-    // تحديث العد التنازلي كل ثانية
-    setInterval(updateCountdown, 1000);
-</script>
-<section style="font-family: 'Arial', sans-serif; margin-bottom: 30px; text-align: center;">
-    <h2 style="color: #0056b3;">عدد الزوار</h2>
-    <div style="background: #e8f5ff; border-left: 5px solid #0056b3; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-        <p id="visitor-count" style="font-size: 1.2em; color: #333; margin: 0; line-height: 1.8;">
-            جاري تحميل عدد الزوار...
-        </p>
-    </div>
-</section>
+        // رسائل تحفيزية
+        const motivationalMessages = [
+            "أنت أول زائر للمشروع! شكرًا لانضمامك إلينا.",
+            "مرحبًا بك في مشروعنا الطموح! نحن نسعى معك لتحقيق الأفضل.",
+            "زيارتك تدفعنا للاستمرار وتحقيق المزيد من الإنجازات!",
+            "رحلتنا نحو التميز تبدأ بك، شكرًا لدعمك."
+        ];
 
-<script>
-    // الحصول على عداد الزوار من Local Storage
-    let visitorCount = localStorage.getItem('visitorCount');
+        const specialMessage =
+            visitorCount === 1
+                ? motivationalMessages[0]
+                : visitorCount % 100 === 0
+                ? `مبروك! أنت الزائر رقم ${visitorCount}.`
+                : motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
 
-    // إذا لم يكن موجودًا، قم بتعيينه إلى 1
-    if (!visitorCount) {
-        visitorCount = 1;
-    } else {
-        visitorCount = parseInt(visitorCount) + 1; // زيادة العداد
-    }
+        document.getElementById("motivational-message").textContent = specialMessage;
 
-    // تحديث العداد في Local Storage
-    localStorage.setItem('visitorCount', visitorCount);
+        // مشاركة المشروع
+        function shareProject() {
+            const shareText = "تعرف على مشروع الصف التفاعلي الذكي بمدرسة محمد بن سليمان الغافري!";
+            const shareUrl = window.location.href;
 
-    // عرض العداد على الصفحة
-    document.getElementById('visitor-count').textContent = `أنت الزائر رقم ${visitorCount}`;
-</script>
+            if (navigator.share) {
+                navigator.share({ text: shareText, url: shareUrl });
+            } else {
+                alert("خاصية المشاركة غير مدعومة على هذا الجهاز.");
+            }
+        }
+    </script>
+</body>
+</html>
+
 
     <section style="font-family: Arial, sans-serif; line-height: 1.8; padding: 20px; background-color: #f9f9f9; margin-bottom: 30px;">
     <h2 style="color: #0056b3; text-align: center; margin-bottom: 20px;">المقدمة:</h2>
