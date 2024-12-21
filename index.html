@@ -125,32 +125,32 @@
     </footer>
 
     <script>
-        // ضبط موعد التدشين (15 يومًا من الآن)
-        const launchDate = new Date();
-        launchDate.setDate(launchDate.getDate() + 15);
+    // ضبط موعد التدشين بتاريخ ثابت
+    const launchDate = new Date("2025-01-02T00:00:00"); // تاريخ التدشين: 2 يناير 2025
 
-        function updateCountdown() {
-            const now = new Date();
-            const diff = launchDate - now;
+    function updateCountdown() {
+        const now = new Date(); // الوقت الحالي
+        const diff = launchDate - now; // الفرق بين الموعد والوقت الحالي
 
-            if (diff <= 0) {
-                document.getElementById("countdown").innerHTML = "تم تدشين المشروع!";
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
+        if (diff <= 0) { // إذا انتهى الوقت
+            document.getElementById("countdown").innerHTML = "🎉 تم تدشين المشروع!";
+            return;
         }
 
-        setInterval(updateCountdown, 1000);
-    </script>
+        // حساب الأيام والساعات والدقائق والثواني
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        // تحديث العد التنازلي
+        document.getElementById("countdown").innerHTML = 
+            `${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
+    }
+
+    // تحديث العد التنازلي كل ثانية
+    setInterval(updateCountdown, 1000);
+</script>
 
     <section style="font-family: Arial, sans-serif; line-height: 1.8; padding: 20px; background-color: #f9f9f9; margin-bottom: 30px;">
     <h2 style="color: #0056b3; text-align: center; margin-bottom: 20px;">المقدمة:</h2>
