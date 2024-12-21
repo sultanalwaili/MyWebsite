@@ -90,6 +90,7 @@
             <h2>عدد الزوار</h2>
             <div class="highlight">
                 <p id="visitor-count">جاري تحميل عدد الزوار...</p>
+                <p id="visitor-message" style="margin-top: 10px; color: #0056b3; font-weight: bold;">شكرًا لزيارتك ودعمك المستمر!</p>
             </div>
         </section>
 
@@ -186,22 +187,23 @@
             "شكراً لزيارتكم ودعمكم المستمر.",
             "معاً نحو مستقبل تعليمي أفضل.",
         ];
-        document.getElementById("daily-message").textContent = messages[new Date().getDay()];
+        const dayOfWeek = new Date().getDay();
+        document.getElementById("daily-message").textContent = messages[dayOfWeek];
 
         // شهادات إلكترونية
         function generateCertificate() {
             const visitorName = prompt("يرجى إدخال اسمك للحصول على الشهادة:");
             if (visitorName) {
                 document.getElementById('visitor-name').textContent = visitorName;
-                const currentDate = new Date().toLocaleDateString('ar-EG');
+                const currentDate = new Date().toLocaleDateString("ar-EG");
                 document.getElementById('current-date').textContent = currentDate;
                 document.getElementById('certificate').style.display = 'block';
             }
         }
 
-        // تحميل الشهادة كصورة
         function downloadCertificate() {
-            html2canvas(document.getElementById('certificate')).then(canvas => {
+            const element = document.getElementById('certificate');
+            html2canvas(element).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'شهادة_شكر.png';
                 link.href = canvas.toDataURL();
@@ -214,8 +216,7 @@
 </body>
 </html>
 
-</body>
-</html>
+
 
 
     <section style="font-family: Arial, sans-serif; line-height: 1.8; padding: 20px; background-color: #f9f9f9; margin-bottom: 30px;">
