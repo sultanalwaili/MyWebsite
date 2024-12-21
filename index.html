@@ -34,11 +34,6 @@
             text-align: center;
         }
 
-        .content-box h2 {
-            color: #0056b3;
-            margin-bottom: 15px;
-        }
-
         .certificate-section {
             margin-top: 30px;
             padding: 20px;
@@ -57,6 +52,14 @@
             text-align: center;
             max-width: 600px;
             margin: 20px auto;
+            position: relative;
+        }
+
+        .certificate img {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
         }
 
         footer {
@@ -64,6 +67,16 @@
             background-color: #007BFF;
             color: white;
             padding: 10px 0;
+        }
+
+        #downloadButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -73,69 +86,75 @@
         <p>مدرسة محمد بن سليمان الغافري</p>
     </header>
 
-    <!-- شعار المدرسة -->
-    <div>
-        <img src="https://d.top4top.io/p_3276hxo1k1.jpg" alt="شعار المدرسة" style="width: 120px; margin: 20px auto;">
-    </div>
-
-    <!-- العد التنازلي -->
-    <div class="content-box">
-        <h2>العد التنازلي لتدشين المشروع:</h2>
-        <div id="countdown">
-            <span id="days">0</span> يوم،
-            <span id="hours">0</span> ساعة،
-            <span id="minutes">0</span> دقيقة،
-            <span id="seconds">0</span> ثانية
+    <main>
+        <!-- الشعار -->
+        <div>
+            <img src="https://d.top4top.io/p_3276hxo1k1.jpg" alt="شعار المدرسة" style="width: 120px; margin-bottom: 20px;">
         </div>
-    </div>
 
-    <!-- عدد الزوار -->
-    <div class="content-box">
-        <h2>عدد الزوار</h2>
-        <p id="visitor-count">أنت الزائر رقم...</p>
-        <p id="motivational-message" style="color: #007BFF;"></p>
-    </div>
+        <!-- العد التنازلي -->
+        <section class="content-box">
+            <h2>العد التنازلي لتدشين المشروع:</h2>
+            <p>يتبقى على موعد التدشين:</p>
+            <div id="countdown">
+                <span id="days">14</span> يوم،
+                <span id="hours">23</span> ساعة،
+                <span id="minutes">59</span> دقيقة،
+                <span id="seconds">19</span> ثانية
+            </div>
+        </section>
 
-    <!-- رسالة يومية -->
-    <div class="content-box">
-        <h2>رسالة اليوم</h2>
-        <p id="daily-message"></p>
-    </div>
+        <!-- رسالة يومية -->
+        <section class="content-box">
+            <h2>رسالة اليوم</h2>
+            <p id="dailyMessage">...</p>
+        </section>
 
-    <!-- استطلاع الرأي -->
-    <div class="content-box">
-        <h2>استطلاع رأي</h2>
-        <p>نرجو منك المشاركة في استطلاع الرأي لتحسين تجربتك معنا:</p>
-        <a href="https://forms.gle/aG59XbnY9DkDnL649" target="_blank" style="color: #0056b3; text-decoration: underline;">اضغط هنا للمشاركة</a>
-    </div>
+        <!-- عدد الزوار -->
+        <section class="content-box">
+            <h2>عدد الزوار</h2>
+            <p id="visitorCount">...</p>
+            <p id="motivationalMessage">شكراً لزيارتك، أنت جزء من نجاحنا!</p>
+        </section>
 
-    <!-- شهادة الشكر -->
-    <div class="certificate-section">
-        <h2>شهادة شكر وتقدير</h2>
-        <p>أدخل اسمك أدناه للحصول على شهادة شكر:</p>
-        <input type="text" id="nameInput" placeholder="أدخل اسمك هنا" style="padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; width: 80%; max-width: 300px;">
-        <button onclick="generateCertificate()" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">احصل على الشهادة</button>
-        <div class="certificate" id="certificate">
-            <h3>شهادة شكر وتقدير</h3>
-            <p>تتقدم مدرسة محمد بن سليمان الغافري بخالص الشكر والتقدير</p>
-            <p>إلى</p>
-            <h2 id="certificateName" style="color: #FF4500;"></h2>
-            <p>على مشاركتكم القيمة ودعمكم المستمر لإنجاح المشروع.</p>
-            <p>بتاريخ: <span id="certificateDate"></span></p>
+        <!-- استطلاع الرأي -->
+        <section class="content-box">
+            <h2>استطلاع رأي</h2>
+            <p>شاركنا برأيك حول المشروع</p>
+            <a href="https://forms.gle/aG59XbnY9DkDnL649" target="_blank" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; text-decoration: none;">افتح النموذج</a>
+        </section>
+
+        <!-- شهادة الشكر -->
+        <div class="certificate-section">
+            <h2>شهادة شكر وتقدير</h2>
+            <p>أدخل اسمك أدناه للحصول على شهادة شكر:</p>
+            <input type="text" id="nameInput" placeholder="أدخل اسمك هنا" style="padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; width: 80%; max-width: 300px;">
+            <button onclick="generateCertificate()" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">احصل على الشهادة</button>
+            <div class="certificate" id="certificate">
+                <img src="https://d.top4top.io/p_3276hxo1k1.jpg" alt="شعار المدرسة">
+                <h3>شهادة شكر وتقدير</h3>
+                <p>تتقدم مدرسة محمد بن سليمان الغافري بخالص الشكر والتقدير</p>
+                <p>إلى</p>
+                <h2 id="certificateName" style="color: #FF4500;"></h2>
+                <p>على مشاركتكم القيمة ودعمكم المستمر لإنجاح المشروع.</p>
+                <p>بتاريخ: <span id="certificateDate"></span></p>
+                <button id="downloadButton">تنزيل الشهادة</button>
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer>&copy; 2025 مدرسة محمد بن سليمان الغافري</footer>
 
     <script>
         // العد التنازلي
         const launchDate = new Date("2025-01-02T00:00:00");
+
         function updateCountdown() {
             const now = new Date();
             const diff = launchDate - now;
 
             if (diff <= 0) {
-                document.getElementById('countdown').innerHTML = "🎉 تم تدشين المشروع!";
+                document.getElementById("countdown").innerHTML = "🎉 تم تدشين المشروع!";
                 return;
             }
 
@@ -144,39 +163,31 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
+            document.getElementById("countdown").innerHTML = 
+                `${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
         }
+
         setInterval(updateCountdown, 1000);
 
-        // عدد الزوار
-        let visitorCount = localStorage.getItem('visitorCount');
-        if (!visitorCount) {
-            visitorCount = 1;
-        } else {
-            visitorCount = parseInt(visitorCount) + 1;
-        }
-        localStorage.setItem('visitorCount', visitorCount);
-        document.getElementById('visitor-count').textContent = `أنت الزائر رقم ${visitorCount}`;
-
-        // رسالة تحفيزية
-        const motivationalMessages = [
-            "كل خطوة تبدأ بحلم، وها نحن معًا نصنع الحلم!",
-            "شكراً لك على دعمك المستمر لتحقيق أهدافنا!",
-            "وجودك معنا اليوم هو دافع لنا نحو الإبداع!"
-        ];
-        document.getElementById('motivational-message').textContent = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
-
         // رسالة يومية
-        const dailyMessages = [
-            "التكنولوجيا هي المستقبل، ونحن معًا نبني هذا المستقبل.",
-            "الابتكار هو مفتاح التميز، وشكرًا لدعمكم.",
-            "تعليم أفضل يبدأ بتكنولوجيا أفضل."
+        const messages = [
+            "اليوم هو بداية جديدة نحو النجاح!",
+            "اجعل يومك مليئًا بالإيجابية والإبداع!",
+            "تعلم شيئًا جديدًا كل يوم!"
         ];
-        const todayIndex = new Date().getDate() % dailyMessages.length;
-        document.getElementById('daily-message').textContent = dailyMessages[todayIndex];
+
+        function displayDailyMessage() {
+            const index = new Date().getDate() % messages.length;
+            document.getElementById("dailyMessage").textContent = messages[index];
+        }
+
+        displayDailyMessage();
+
+        // عدد الزوار
+        let visitorCount = localStorage.getItem('visitorCount') || 0;
+        visitorCount++;
+        localStorage.setItem('visitorCount', visitorCount);
+        document.getElementById('visitorCount').textContent = `أنت الزائر رقم ${visitorCount}`;
 
         // شهادة الشكر
         function generateCertificate() {
@@ -185,14 +196,24 @@
                 alert("يرجى إدخال اسمك!");
                 return;
             }
+
             document.getElementById("certificateName").textContent = name;
             document.getElementById("certificateDate").textContent = new Date().toLocaleDateString("ar-EG");
             document.getElementById("certificate").style.display = "block";
+
+            document.getElementById("downloadButton").onclick = function () {
+                html2canvas(document.getElementById("certificate")).then(function (canvas) {
+                    const link = document.createElement("a");
+                    link.download = `شهادة_شكر_${name}.png`;
+                    link.href = canvas.toDataURL();
+                    link.click();
+                });
+            };
         }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
-
 
     <section style="font-family: Arial, sans-serif; line-height: 1.8; padding: 20px; background-color: #f9f9f9; margin-bottom: 30px;">
     <h2 style="color: #0056b3; text-align: center; margin-bottom: 20px;">المقدمة:</h2>
