@@ -10,142 +10,148 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            line-height: 1.8;
             text-align: center;
+            line-height: 1.8;
         }
 
         header {
             background-color: #007BFF;
             color: white;
             padding: 20px;
-            text-align: center;
         }
 
-        header h1, header h2, header p {
+        header h1, header p {
             margin: 0;
         }
 
-        main {
-            padding: 20px;
-            max-width: 1000px;
-            margin: 20px auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .countdown-section {
+        .content-box {
             background-color: #E8F4FF;
             padding: 20px;
             margin: 30px auto;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 500px;
-            line-height: 1.8;
+            text-align: center;
         }
 
-        .countdown-section h2 {
+        .content-box h2 {
             color: #0056b3;
-            font-size: 1.8em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        .highlight {
-            background: #e8f5ff;
-            border-left: 5px solid #0056b3;
-            padding: 15px;
-            border-radius: 8px;
+        .certificate-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #FFF5E6;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            color: white;
+        .certificate {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #FFD700;
+            background-color: #FFFACD;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        footer {
+            margin-top: 20px;
             background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
+            color: white;
+            padding: 10px 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>مرحبًا بكم في مشروع الصف التفاعلي الذكي بمدرسة محمد بن سليمان الغافري</h1>
-        <h2>مشروع الصف التفاعلي الذكي</h2>
-        <p>نحو بيئة تعليمية متطورة</p>
+        <h1>مشروع الصف التفاعلي الذكي</h1>
+        <p>مدرسة محمد بن سليمان الغافري</p>
     </header>
-    <main>
-        <!-- الشعار -->
-        <div class="school-logo">
-            <img src="https://d.top4top.io/p_3276hxo1k1.jpg" alt="شعار المدرسة" style="width: 120px; margin-bottom: 20px;">
+
+    <!-- شعار المدرسة -->
+    <div>
+        <img src="https://d.top4top.io/p_3276hxo1k1.jpg" alt="شعار المدرسة" style="width: 120px; margin: 20px auto;">
+    </div>
+
+    <!-- العد التنازلي -->
+    <div class="content-box">
+        <h2>العد التنازلي لتدشين المشروع:</h2>
+        <div id="countdown">
+            <span id="days">0</span> يوم،
+            <span id="hours">0</span> ساعة،
+            <span id="minutes">0</span> دقيقة،
+            <span id="seconds">0</span> ثانية
         </div>
+    </div>
 
-        <!-- عداد الزوار -->
-        <section>
-            <h2>عدد الزوار</h2>
-            <div class="highlight">
-                <p id="visitor-count">جاري تحميل عدد الزوار...</p>
-                <p id="visitor-message" style="margin-top: 10px; color: #0056b3; font-weight: bold;">شكرًا لزيارتك ودعمك المستمر!</p>
-            </div>
-        </section>
+    <!-- عدد الزوار -->
+    <div class="content-box">
+        <h2>عدد الزوار</h2>
+        <p id="visitor-count">أنت الزائر رقم...</p>
+        <p id="motivational-message" style="color: #007BFF;"></p>
+    </div>
 
-        <!-- العد التنازلي -->
-        <section class="countdown-section">
-            <h2>العد التنازلي لتدشين المشروع:</h2>
-            <p>يتبقى على موعد التدشين:</p>
-            <div id="countdown">
-                <span id="days">0</span> يوم،
-                <span id="hours">0</span> ساعة،
-                <span id="minutes">0</span> دقيقة،
-                <span id="seconds">0</span> ثانية
-            </div>
-        </section>
+    <!-- رسالة يومية -->
+    <div class="content-box">
+        <h2>رسالة اليوم</h2>
+        <p id="daily-message"></p>
+    </div>
 
-        <!-- رسالة يومية ملهمة -->
-        <section>
-            <h2>رسالة اليوم</h2>
-            <div class="highlight">
-                <p id="daily-message">"التعليم هو السلاح الأقوى الذي يمكنك استخدامه لتغيير العالم."</p>
-            </div>
-        </section>
+    <!-- استطلاع الرأي -->
+    <div class="content-box">
+        <h2>استطلاع رأي</h2>
+        <p>نرجو منك المشاركة في استطلاع الرأي لتحسين تجربتك معنا:</p>
+        <a href="https://forms.gle/aG59XbnY9DkDnL649" target="_blank" style="color: #0056b3; text-decoration: underline;">اضغط هنا للمشاركة</a>
+    </div>
 
-        <!-- استطلاع رأي -->
-        <section>
-            <h2>استطلاع رأي</h2>
-            <p>شاركنا رأيك حول المشروع لتساعدنا في تحسين تجربة التعليم:</p>
-            <button onclick="window.open('https://forms.gle/aG59XbnY9DkDnL649', '_blank')">شارك الآن</button>
-        </section>
-
-        <!-- شهادات إلكترونية -->
-        <section>
-            <h2>شهادتك</h2>
-            <p>احصل على شهادة شكر إلكترونية تقديراً لدعمك:</p>
-            <button onclick="generateCertificate()">احصل على شهادة شكر</button>
-        </section>
-
-        <!-- شهادة الشكر -->
-        <div id="certificate" style="display: none; text-align: center; padding: 20px; border: 2px solid #007BFF; border-radius: 10px; max-width: 600px; margin: 20px auto; background-color: #f9f9f9;">
-            <img src="https://d.top4top.io/p_3276hxo1k1.jpg" alt="شعار المدرسة" style="width: 100px; margin-bottom: 20px;">
-            <h2 style="color: #0056b3;">شهادة شكر وتقدير</h2>
-            <p style="font-size: 1.2em;">تُمنح هذه الشهادة إلى:</p>
-            <h3 id="visitor-name" style="color: #333; font-weight: bold; margin: 10px 0;">[اسم الزائر]</h3>
-            <p style="font-size: 1em; color: #333;">تقديراً لدعمه وتشجيعه لمشروع <strong>"الصف التفاعلي الذكي"</strong> في مدرسة محمد بن سليمان الغافري.</p>
-            <p style="font-size: 0.9em; color: #666;">بتاريخ: <span id="current-date"></span></p>
-            <button onclick="downloadCertificate()" style="margin-top: 20px; padding: 10px 20px; font-size: 1em; background-color: #007BFF; color: white; border: none; border-radius: 5px;">تحميل الشهادة</button>
+    <!-- شهادة الشكر -->
+    <div class="certificate-section">
+        <h2>شهادة شكر وتقدير</h2>
+        <p>أدخل اسمك أدناه للحصول على شهادة شكر:</p>
+        <input type="text" id="nameInput" placeholder="أدخل اسمك هنا" style="padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; width: 80%; max-width: 300px;">
+        <button onclick="generateCertificate()" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">احصل على الشهادة</button>
+        <div class="certificate" id="certificate">
+            <h3>شهادة شكر وتقدير</h3>
+            <p>تتقدم مدرسة محمد بن سليمان الغافري بخالص الشكر والتقدير</p>
+            <p>إلى</p>
+            <h2 id="certificateName" style="color: #FF4500;"></h2>
+            <p>على مشاركتكم القيمة ودعمكم المستمر لإنجاح المشروع.</p>
+            <p>بتاريخ: <span id="certificateDate"></span></p>
         </div>
-    </main>
+    </div>
 
-    <footer>
-        &copy; 2024 مدرسة محمد بن سليمان الغافري
-    </footer>
+    <footer>&copy; 2025 مدرسة محمد بن سليمان الغافري</footer>
 
     <script>
-        // عداد الزوار
+        // العد التنازلي
+        const launchDate = new Date("2025-01-02T00:00:00");
+        function updateCountdown() {
+            const now = new Date();
+            const diff = launchDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = "🎉 تم تدشين المشروع!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        setInterval(updateCountdown, 1000);
+
+        // عدد الزوار
         let visitorCount = localStorage.getItem('visitorCount');
         if (!visitorCount) {
             visitorCount = 1;
@@ -155,68 +161,37 @@
         localStorage.setItem('visitorCount', visitorCount);
         document.getElementById('visitor-count').textContent = `أنت الزائر رقم ${visitorCount}`;
 
-        // العد التنازلي
-        const launchDate = new Date("2025-01-02T00:00:00");
-
-        function updateCountdown() {
-            const now = new Date();
-            const diff = launchDate - now;
-
-            if (diff <= 0) {
-                document.getElementById("countdown").innerHTML = "🎉 تم تدشين المشروع!";
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000)) / 1000);
-
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
-        }
-
-        setInterval(updateCountdown, 1000);
+        // رسالة تحفيزية
+        const motivationalMessages = [
+            "كل خطوة تبدأ بحلم، وها نحن معًا نصنع الحلم!",
+            "شكراً لك على دعمك المستمر لتحقيق أهدافنا!",
+            "وجودك معنا اليوم هو دافع لنا نحو الإبداع!"
+        ];
+        document.getElementById('motivational-message').textContent = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
 
         // رسالة يومية
-        const messages = [
-            "التعليم هو السلاح الأقوى لتغيير العالم.",
-            "رحلتنا نحو التميز تبدأ الآن.",
-            "شكراً لزيارتكم ودعمكم المستمر.",
-            "معاً نحو مستقبل تعليمي أفضل.",
+        const dailyMessages = [
+            "التكنولوجيا هي المستقبل، ونحن معًا نبني هذا المستقبل.",
+            "الابتكار هو مفتاح التميز، وشكرًا لدعمكم.",
+            "تعليم أفضل يبدأ بتكنولوجيا أفضل."
         ];
-        const dayOfWeek = new Date().getDay();
-        document.getElementById("daily-message").textContent = messages[dayOfWeek];
+        const todayIndex = new Date().getDate() % dailyMessages.length;
+        document.getElementById('daily-message').textContent = dailyMessages[todayIndex];
 
-        // شهادات إلكترونية
+        // شهادة الشكر
         function generateCertificate() {
-            const visitorName = prompt("يرجى إدخال اسمك للحصول على الشهادة:");
-            if (visitorName) {
-                document.getElementById('visitor-name').textContent = visitorName;
-                const currentDate = new Date().toLocaleDateString("ar-EG");
-                document.getElementById('current-date').textContent = currentDate;
-                document.getElementById('certificate').style.display = 'block';
+            const name = document.getElementById("nameInput").value;
+            if (!name) {
+                alert("يرجى إدخال اسمك!");
+                return;
             }
-        }
-
-        function downloadCertificate() {
-            const element = document.getElementById('certificate');
-            html2canvas(element).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'شهادة_شكر.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
+            document.getElementById("certificateName").textContent = name;
+            document.getElementById("certificateDate").textContent = new Date().toLocaleDateString("ar-EG");
+            document.getElementById("certificate").style.display = "block";
         }
     </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>
-
-
 
 
     <section style="font-family: Arial, sans-serif; line-height: 1.8; padding: 20px; background-color: #f9f9f9; margin-bottom: 30px;">
