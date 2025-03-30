@@ -18,6 +18,43 @@
             background-color: #007BFF;
             color: white;
             padding: 20px;
+        }
+
+        /* تعديلات زر العودة الجديدة */
+        .back-to-school-container {
+            margin: 15px 0;
+        }
+
+        .back-to-school {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            display: inline-block;
+            margin: 10px auto;
+        }
+
+        .back-to-school:hover {
+            background-color: #2E7D32;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+          font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
             position: relative;
         }
 
@@ -59,7 +96,7 @@
             margin: 0;
         }
 
-      .content-box {
+       .content-box {
             background-color: #E8F4FF;
             padding: 20px;
             margin: 30px auto;
@@ -112,6 +149,18 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        /* تحسينات للهواتف */
+        @media (max-width: 768px) {
+            .back-to-school {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            header {
+                padding: 15px 10px;
+            }
         }
     </style>
 </head>
